@@ -1,0 +1,46 @@
+{% extends "general_layout.html" %}
+{% block content %}
+
+<article class="media content-section">
+    <div class="media-body">
+
+        <div class="article-metadata">
+            <h2 class="article-title">{{ post.post_title }}</h2>
+            <img class="rounded-circle article-img " hight=32 width=32 src="{{ url_for('static',filename='pic/'+post.author.image) }}">
+            <p class="article-content" >作者:{{ post.author.username }}</p>
+            <small class="text-muted">发表时间:{{ post.post_time.strftime('%Y-%m-%d %H:%M:%S') }}</small>
+            <p class="article">{{ post.post_content }}</p>
+        </div>
+        <div class= "border-top pt-3">
+            {% if post.author == current_user %}
+            <a class="btn btn-secondary sm-1" href = "{{ url_for ('updatepost',post_id =post.id) }}">点我更新</a>
+            {% endif %}
+            <a class="btn btn-secondary ml-2" href="{{ url_for('index') }}">点我返回</a>
+            {% if post.author == current_user %}
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                    点我删除
+                </button>
+            {% endif %}
+        </div>
+    </div>
+    
+</article>
+<!-- Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h5 class="modal-title" id="deleteModalLabel">您正在删除文章</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+        请再次确认是否需要删除
+        </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">关闭</button>
+        <button type="button" class="btn btn-primary">确认删除</button>
+        </div>
+    </div>
+    </div>
+</div>
+{% endblock content %}

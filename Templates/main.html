@@ -1,0 +1,34 @@
+{% extends "general_layout.html" %}
+{% block content %}
+    <div class="content-section">
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <legend class="border-bottom">欢迎留言</legend>
+                <div class="form-group">
+                    {{ form.post_title.label(class="form-control-label")}}
+                    {{ form.post_title(class="form-control form-control-lg") }}
+                </div>
+                <div class="form-group">
+                    {{ form.content.label(class="form-control-label")}}
+                    {{ form.content(class="form-control form-control-lg") }}
+                </div>
+            </fieldset>
+            <div class="form-group">
+                {{ form.submit(class="btn btn-outline-info") }}
+            </div>
+        </form>
+    </div>
+    {% for post in posts %}
+        <article class="media content-section">
+            <div class="media-body">
+            <div class="article-metadata">
+                <a class="mr-2" href="#">{{ post[2] }}</a>
+                <small class="text-muted">{{ post[0] }}发布</small>
+            </div>
+            <h2><a class="article-title" href="#">{{ post[2] }}</a></h2>
+            <p class="article-content">{{ post[1] }}</p>
+            </div>
+        </article>
+    {% endfor %}
+{% endblock content %}

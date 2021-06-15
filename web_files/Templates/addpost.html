@@ -1,0 +1,23 @@
+{% extends "general_layout.html" %}
+{% block content %}
+    <div class="content-section">
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <legend class="border-bottom">{{ legend }}</legend>
+                <div class="form-group">
+                    {{ form.post_title.label(class="form-control-label")}}
+                    {{ form.post_title(class="form-control form-control-lg") }}
+                </div>
+                <div class="form-group">
+                    {{ form.content.label(class="form-control-label")}}
+                    {{ form.content(class="form-control form-control-lg") }}
+                </div>
+            </fieldset>
+            <div class="form-group">
+                {{ form.submit(class="btn btn-outline-info") }}
+                <a class="btn btn-outline-info" href="{{ url_for('index') }}">点我返回</a>
+            </div>
+        </form>
+    </div>
+{% endblock content %}

@@ -1,0 +1,20 @@
+{% extends "general_layout.html" %}
+{% block content %}
+<div class="album py-5 bg-light">
+    <div class="container">
+
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        {% for picture in pictures %}
+          <div class="card" style="width: 17rem;">
+            <img style = 'display: block; height:12rem;' src="{{url_for('static',filename='products/' + picture.picture_path) }}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">{{ picture.picture_name }}</h5>
+              <p class="card-text">{{ picture.picture_content }}</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% endblock content %}

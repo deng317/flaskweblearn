@@ -1,0 +1,16 @@
+{% extends "general_layout.html" %}
+{% block content %}
+    <div class="content-section">
+        <legend class="border-bottom">用户信息</legend>
+        <div class="media">
+            <img class='account-img rounded-circle' src="{{ image_file }}" alt="mdo" width="32" height="32" class="rounded-circle">
+            <div class="media-body">
+                <h2 class="form-group">昵称: {{ current_user.username }}</h2>
+                <p class="text-secondary">邮箱: {{ current_user.email }}</p>
+                <a class="btn btn-outline-info list-group-item-light" href="{{ url_for ('update_info')}}">修改个人信息</a>
+                <a class="btn btn-outline-info list-group-item-light" href="{{ url_for ('update_password')}}">修改密码</a>
+            </div>
+        </div>
+        
+    </div>
+{% endblock content %}
